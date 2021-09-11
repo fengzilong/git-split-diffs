@@ -1,12 +1,11 @@
 {
-    "name": "git-split-diffs",
-    "version": "0.10.0",
+    "name": "git-split-diffs-api",
+    "version": "0.1.0",
     "description": "Split diffs, now in your terminal",
-    "homepage": "https://github.com/banga/git-split-diffs",
-    "repository": "github:banga/git-split-diffs",
-    "bin": "./bin/git-split-diffs",
+    "homepage": "https://github.com/fengzilong/git-split-diffs",
+    "repository": "github:fengzilong/git-split-diffs",
+    "main": "build/index.js",
     "files": [
-        "bin/*",
         "build/*.js",
         "themes/*.json"
     ],
@@ -33,7 +32,7 @@
         "clean": "rimraf ./build/*",
         "build": "yarn clean && yarn esbuild --external:ansi-regex --external:chalk --external:diff --external:shiki --external:term-size --platform=node --target=node12 --outdir=build --bundle",
         "build:dev": "yarn build src/index.ts src/benchmark.ts src/previewTheme.ts",
-        "build:publish": "yarn build src/index.ts --minify",
+        "build:publish": "yarn build src/index.ts",
         "previewTheme": "nodemon -q build/previewTheme.js",
         "benchmark": "yarn build:dev && node build/benchmark.js",
         "prepublishOnly": "yarn test && yarn build:publish"

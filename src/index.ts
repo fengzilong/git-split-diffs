@@ -1,14 +1,24 @@
 import chalk from 'chalk';
-import * as process from 'process';
+import { Readable, Writable } from 'stream';
 import terminalSize from 'term-size';
 import { getContextForConfig } from './context';
 import { getGitConfig } from './getGitConfig';
 import { transformContentsStreaming } from './transformContentsStreaming';
 
-async function main() {
+export async function transform( input: string ): Promise<string> {
     const config = await getGitConfig(terminalSize().columns, chalk);
     const context = await getContextForConfig(config);
-    await transformContentsStreaming(context, process.stdin, process.stdout);
-}
 
-main();
+    let string = '';
+    await transformContentsStreaming(
+        context,
+        Readable.from(input),
+        new (class extends Writable {
+            write(chunk: Buffer) {
+                string += chunk.toString();
+                return true;
+            }
+        })()
+    );
+    return string;
+}

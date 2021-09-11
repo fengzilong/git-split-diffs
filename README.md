@@ -1,3 +1,7 @@
+This is a fork of [git-split-diffs](https://github.com/banga/git-split-diffs)
+
+It exposes a nodejs api to transform git diff result
+
 # git-split-diffs
 
 GitHub style split diffs with syntax highlighting in your terminal.
@@ -10,7 +14,7 @@ GitHub style split diffs with syntax highlighting in your terminal.
 
 ## Usage
 
-This currently requires `node` version 12 or newer to run. 
+This currently requires `node` version 12 or newer to run.
 
 ### Install globally
 
