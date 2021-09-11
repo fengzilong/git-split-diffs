@@ -35,7 +35,7 @@
         "build:publish": "yarn build src/index.ts",
         "previewTheme": "nodemon -q build/previewTheme.js",
         "benchmark": "yarn build:dev && node build/benchmark.js",
-        "prepublishOnly": "yarn test && yarn build:publish"
+        "prepublishOnly": "npm run test && npm run build:publish"
     },
     "devDependencies": {
         "@types/benchmark": "^2.1.0",
