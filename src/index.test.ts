@@ -1,4 +1,4 @@
-import transform from './index'
+import {transform} from './index'
 
 describe('basic', () => {
     test('empty', async function () {
