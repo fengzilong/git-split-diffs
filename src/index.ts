@@ -5,8 +5,25 @@ import { getContextForConfig } from './context';
 import { getGitConfig } from './getGitConfig';
 import { transformContentsStreaming } from './transformContentsStreaming';
 
-export async function transform( input: string ): Promise<string> {
-    const config = await getGitConfig(terminalSize().columns, chalk);
+export async function transform(input: string, options?: any): Promise<string> {
+    let config = await getGitConfig(terminalSize().columns, chalk);
+    const overrides: any = {};
+
+    const { disableSyntaxHighlight = true, forceSideBySide = false } =
+        options || {};
+
+    if (disableSyntaxHighlight === true) {
+        overrides.SYNTAX_HIGHLIGHTING_THEME = '';
+    }
+
+    if (forceSideBySide === true) {
+        overrides.MIN_LINE_WIDTH = 0;
+    }
+
+    config = {
+        ...config,
+        ...overrides,
+    };
     const context = await getContextForConfig(config);
 
     let string = '';
