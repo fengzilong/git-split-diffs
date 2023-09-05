@@ -1,6 +1,9 @@
 import * as assert from 'assert';
 import * as path from 'path';
 import * as fs from 'fs';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const THEMES_DIR = path.resolve(__dirname, '..', 'themes');
 
