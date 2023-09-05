@@ -24,9 +24,9 @@ export async function transform(input: string, options?: any): Promise<string> {
     }
 
     if (typeof columns === 'number') {
-        overrides.screenWidth = columns;
+        overrides.SCREEN_WIDTH = columns;
     } else if (typeof columns === 'function') {
-        overrides.screenWidth = columns(terminalSize().columns);
+        overrides.SCREEN_WIDTH = columns(terminalSize().columns);
     }
 
     config = {
