@@ -9,8 +9,11 @@ export async function transform(input: string, options?: any): Promise<string> {
     let config = await getGitConfig(terminalSize().columns, chalk);
     const overrides: any = {};
 
-    const { disableSyntaxHighlight = true, forceSideBySide = false } =
-        options || {};
+    const {
+        disableSyntaxHighlight = true,
+        forceSideBySide = false,
+        columns
+    } = options || {};
 
     if (disableSyntaxHighlight === true) {
         overrides.SYNTAX_HIGHLIGHTING_THEME = '';
@@ -18,6 +21,12 @@ export async function transform(input: string, options?: any): Promise<string> {
 
     if (forceSideBySide === true) {
         overrides.MIN_LINE_WIDTH = 0;
+    }
+
+    if (typeof columns === 'number') {
+        overrides.screenWidth = columns;
+    } else if (typeof columns === 'function') {
+        overrides.screenWidth = columns(terminalSize().columns);
     }
 
     config = {
