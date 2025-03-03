@@ -14,7 +14,7 @@ const commonOptions = {
             JSON.parse(fs.readFileSync('package.json', 'utf-8')).dependencies
         ),
     ],
-    banner: { js: '#!/usr/bin/env node' },
+    // banner: { js: '#!/usr/bin/env node' },
     outExtension: { '.js': '.mjs' },
     sourcemap: false,
     logLevel: 'info',
@@ -30,7 +30,7 @@ const devOptions = {
 const prodOptions = {
     ...commonOptions,
     entryPoints: ['src/index.ts'],
-    minify: true,
+    minify: false,
 };
 
 async function main(args) {

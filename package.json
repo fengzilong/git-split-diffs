@@ -1,16 +1,14 @@
 {
-    "name": "git-split-diffs",
-    "version": "2.2.0",
+    "name": "git-split-diffs-api",
+    "version": "2.0.0",
     "description": "Split diffs, now in your terminal",
-    "homepage": "https://github.com/banga/git-split-diffs",
+    "homepage": "https://github.com/fengzilong/git-split-diffs",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/banga/git-split-diffs.git"
+        "url": "git+https://github.com/fengzilong/git-split-diffs.git"
     },
     "type": "module",
-    "bin": {
-        "git-split-diffs": "build/index.mjs"
-    },
+    "exports": "./build/index.mjs",
     "files": [
         "build/*",
         "themes/*.json"
@@ -65,5 +63,5 @@
         "typescript": "^5.0.4",
         "typescript-eslint": "^7.15.0"
     },
-    "packageManager": "npm@9.8.1"
+    "packageManager": "pnpm@9.15.1"
 }

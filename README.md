@@ -1,3 +1,7 @@
+This is a fork of [git-split-diffs](https://github.com/banga/git-split-diffs)
+
+It exposes a Node.js api to transform git diff result
+
 # git-split-diffs
 
 GitHub style split (side by side) diffs with syntax highlighting in your terminal.
