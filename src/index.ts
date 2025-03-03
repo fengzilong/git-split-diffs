@@ -11,16 +11,23 @@ const execAsync = util.promisify(exec);
 
 async function transform(
     input: string,
-    userConfig: Partial<Config>,
+    userConfig: Partial<Config & { THEME_NAME: string }>,
     columns: number = terminalSize().columns,
 ): Promise<string> {
+    const { THEME_NAME, ...restUserConfig } = userConfig ?? {}
     const { stdout: gitConfigString } = await execAsync('git config -l');
     const gitConfig = getGitConfig(gitConfigString);
+
+    // override THEME_NAME
+    if (THEME_NAME) {
+        gitConfig.THEME_NAME = THEME_NAME
+    }
+
     const config = getConfig(gitConfig);
 
     const finalConfig: Config = {
         ...config,
-        ...userConfig,
+        ...restUserConfig,
     };
     const context = await getContextForConfig(
         finalConfig,

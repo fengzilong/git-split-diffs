@@ -1,6 +1,6 @@
 {
     "name": "git-split-diffs-api",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "description": "Split diffs, now in your terminal",
     "homepage": "https://github.com/fengzilong/git-split-diffs",
     "repository": {
